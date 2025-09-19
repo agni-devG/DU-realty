@@ -1,41 +1,42 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onyx Food Court</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
-    <section class="nav">
-        <img src="" alt="DU Realty Logo">
+<body class="lp-body">
+    <section class="lp_onyx-nav">
+        <img src="assets/imgs/logo.svg" alt="DU Realty Logo">
     </section>
     <section class="main">
         <div class="main-grid">
             <div class="left">
-                <h1>Book your free site visit today</h1>
-                <form>
+                <form class="lp-form-container" >
+                    <h1>Book your free site visit today</h1>
                 <!-- Name -->
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name"><br><br>
+                <label class="lp-form-label" for="name">Name</label>
+                <input class="lp-form-input" type="text" id="name" name="name" placeholder="Enter your name">
                 
                 <!-- Phone -->
-                <label for="whatsapp_no">WhatsApp Number:</label><br>
-                <input type="tel" id="phone" name="phone"><br><br>
+                <label class="lp-form-label" for="whatsapp_no">WhatsApp Number</label>
+                <input class="lp-form-input" type="tel" id="phone" name="phone" placeholder="Enter your WhatsApp number">
 
                 <!-- Email -->
-                <label for="email">Email ID</label><br>
-                <input type="email" id="email" name="email"><br><br>
+                <label class="lp-form-label" for="email">Email ID</label>
+                <input class="lp-form-input" type="email" id="email" name="email"placeholder="Enter your email ID">
 
                 <!-- Submit -->
                 <button class="lp-form-submit-btn" type="submit">Submit</button>
             </form>
             </div>
             <div class="right">
-                <img src="" alt="Image of 3D Onyx buiding" class="onyx-img">
+                <img src="assets/imgs/desktop.webp" alt="Image of 3D Onyx buiding" class="onyx-img">
+                <img src="assets/imgs/tablet.webp" alt="Image of 3D Onyx buiding" class="onyx-img-tabelt" style="display: none;">
+                
             </div>
         </div>
     </section>

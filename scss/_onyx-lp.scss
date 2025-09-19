@@ -1,4 +1,167 @@
-body{
-    background-color: $black;
+.lp-body{
+    margin: 0;
+    // height: 100vh;
+    font-family: $font-default;
+    font-size: 16px;
+}
+
+.lp_onyx-nav{
+    padding: 28px 40px ;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin : 0;
+    z-index: 100;
+    // background-color: white;
+    img{
+    height: 32px;        
+    }
+}
+
+.main-grid{
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+    height: 100vh;
+}
+
+
+
+.right{
+    width: 50vw;
+    .onyx-img{
+        width: 100%;
+        height: 100vh ;
+        object-fit: cover;
+         object-position: 0% 20%;
+    }
+}
+
+
+
+.left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // width: 50vw;
+    h1{
+        font-size: 36px;
+        max-width: 20ch;
+    }
+    // margin: auto;
+}
+
+.lp-form-container{
+    display: flex;
+    flex-direction: column;    
+    align-items: stretch;
+    input{
+        flex: 1;
+        
+        box-sizing: border-box;}
+;
     
+    .lp-form-label{
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+    .lp-form-input{
+        font-size: 16px;
+        font-family: $font-default;
+        height: 32px;
+        border: 1px solid #000000;
+        border-radius: 4px;
+        margin-bottom: 24px;
+        padding:6px 12px;
+    }
+}
+
+.lp-form-submit-btn{
+    flex: 0 0 auto;
+    align-self: flex-start;
+    padding: 12px 24px;
+    cursor: pointer;
+    background-color: $primary;
+    font-family: $font-default;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    border: none;
+    line-height: 1.2;
+    line-height: 100%;
+    //  box-sizing: border-box;
+    border-radius: 8px;
+    transition: all 150ms ease;
+}
+
+
+.lp-form-submit-btn:hover{
+    background-color: darken($primary, 20%);
+}
+
+
+
+
+.lp-form-input::placeholder{
+    font-size: 16px;
+    color: #0000005d;
+    font-weight: 400;
+    font-family: $font-default;
+}
+
+
+
+
+
+// media queries
+
+/* Small devices (phones, up to 600px) */
+@media (max-width: 600px) {
+  
+    .lp_onyx-nav{
+    padding: 16px 20px ;
+    }
+
+    .main-grid{
+    display: flex;
+    flex-direction: column;
+  }
+  .lp-form-container{
+    padding: 0 40px;
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Medium devices (tablets, 601px to 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* Large devices (laptops, 901px to 1200px) */
+@media (min-width: 901px) and (max-width: 1200px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+/* Extra large devices (desktops, 1201px and above) */
+@media (min-width: 1201px) {
+  body {
+    font-size: 20px;
+  }
 }
