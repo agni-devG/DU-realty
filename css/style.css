@@ -107,23 +107,52 @@
   .lp-form-container {
     padding: 0 40px;
   }
+  .lp-form-container h1 {
+    font-size: 28px;
+  }
+  .lp-form-container {
+    margin-top: 10vh;
+  }
+  .lp-form-submit-btn {
+    flex: 1;
+    align-self: stretch;
+  }
+  .lp-form-label {
+    font-size: 18px;
+  }
+  .right {
+    width: 100vw;
+    margin-top: 20px;
+  }
 }
 /* Medium devices (tablets, 601px to 900px) */
 @media (min-width: 601px) and (max-width: 900px) {
-  body {
-    font-size: 16px;
+  .lp_onyx-nav {
+    padding: 16px 20px;
   }
-}
-/* Large devices (laptops, 901px to 1200px) */
-@media (min-width: 901px) and (max-width: 1200px) {
-  body {
+  .main-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .lp-form-container {
+    padding: 0 40px;
+  }
+  .lp-form-container h1 {
+    font-size: 28px;
+  }
+  .lp-form-container {
+    margin-top: 10vh;
+  }
+  .lp-form-submit-btn {
+    flex: 1;
+    align-self: stretch;
+  }
+  .lp-form-label {
     font-size: 18px;
   }
-}
-/* Extra large devices (desktops, 1201px and above) */
-@media (min-width: 1201px) {
-  body {
-    font-size: 20px;
+  .right {
+    width: 100vw;
+    margin-top: 20px;
   }
 }
 
