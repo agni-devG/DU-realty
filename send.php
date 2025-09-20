@@ -19,14 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'yourgmail@gmail.com'; // 👈 your Gmail
-        $mail->Password   = 'your-app-password';   // 👈 16-char App Password
+        $mail->Username   = 'satyadixit08@gmail.com'; // 👈 your Gmail
+        $mail->Password   = 'pyudgpvojrnryixs';   // 👈 16-char App Password
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
 
         // Recipients
-        $mail->setFrom('yourgmail@gmail.com', 'Website Lead');
-        $mail->addAddress('yourgmail@gmail.com'); // 👈 where you want to receive leads
+        $mail->setFrom('satyadixit08@gmail.com', 'Website Lead');
+        $mail->addAddress('satyadixit08@gmail.com'); // 👈 where you want to receive leads
         $mail->addReplyTo($email, $name);
 
         // Content
