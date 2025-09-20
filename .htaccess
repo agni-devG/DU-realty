@@ -3,16 +3,16 @@ RewriteEngine On
 # Remove .html extension
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
-RewriteRule ^([^/]+)/?$ $1.html [L]
+RewriteRule ^(.+?)/?$ $1.html [L]
 
 # Remove .php extension
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^([^/]+)/?$ $1.php [L]
+RewriteRule ^(.+?)/?$ $1.php [L]
 
-# (Optional) Redirect .html/.php requests to extensionless version
+# Optional: redirect .html/.php to clean URL
 RewriteCond %{THE_REQUEST} \s/+(.*)\.html [NC]
-RewriteRule ^ %1 [R=301,L]
+RewriteRule ^ /%1 [R=301,L]
 
 RewriteCond %{THE_REQUEST} \s/+(.*)\.php [NC]
-RewriteRule ^ %1 [R=301,L]
+RewriteRule ^ /%1 [R=301,L]
