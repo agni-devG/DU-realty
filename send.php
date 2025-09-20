@@ -25,8 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Port       = 587;
 
         // Recipients
-        $mail->setFrom('satyadixit08@gmail.com', 'Website Lead');
-        $mail->addAddress('satyadixit08@gmail.com'); // 👈 where you want to receive leads
+        $mail->setFrom(getenv('GMAIL_USER'), 'Website Lead');
+        $mail->addAddress(getenv('GMAIL_USER')); // 👈 where you want to receive leads
         $mail->addReplyTo($email, $name);
 
         // Content
