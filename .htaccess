@@ -1,5 +1,9 @@
 RewriteEngine On
 
+# Skip certain files from rewriting
+RewriteCond %{REQUEST_URI} ^/(send\.php|config\.php|phpmailer/.*)$ [NC]
+RewriteRule ^ - [L]
+
 # Remove .html extension
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
@@ -10,7 +14,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.+?)/?$ $1.php [L]
 
-# Optional: redirect .html/.php to clean URL
+# Redirect .html/.php to clean URL
 RewriteCond %{THE_REQUEST} \s/+(.*)\.html [NC]
 RewriteRule ^ /%1 [R=301,L]
 
