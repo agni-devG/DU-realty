@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers .= "Reply-To: $email\r\n";
 
     if (mail($to, $subject, $message, $headers)) {
-        header("Location: thank-you.html");
+        header("Location: thankyou.html");
         exit;
     } else {
         echo "❌ Something went wrong. Please try again later.";
