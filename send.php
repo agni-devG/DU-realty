@@ -1,20 +1,43 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Load PHPMailer files
+require 'phpmailer/Exception.php';
+require 'phpmailer/PHPMailer.php';
+require 'phpmailer/SMTP.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name    = htmlspecialchars($_POST['name']);
     $phone   = htmlspecialchars($_POST['phone']);
     $email   = htmlspecialchars($_POST['email']);
 
-    $to      = "satya@durealty.in"; // 👈 change this to your email
-    $subject = "New Site Visit Lead";
-    $message = "Name: $name\nWhatsApp: $phone\nEmail: $email";
-    $headers = "From: no-reply@yourdomain.com\r\n";
-    $headers .= "Reply-To: $email\r\n";
+    $mail = new PHPMailer(true);
 
-    if (mail($to, $subject, $message, $headers)) {
+    try {
+        // Server settings
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'yourgmail@gmail.com'; // 👈 your Gmail
+        $mail->Password   = 'your-app-password';   // 👈 16-char App Password
+        $mail->SMTPSecure = 'tls';
+        $mail->Port       = 587;
+
+        // Recipients
+        $mail->setFrom('yourgmail@gmail.com', 'Website Lead');
+        $mail->addAddress('yourgmail@gmail.com'); // 👈 where you want to receive leads
+        $mail->addReplyTo($email, $name);
+
+        // Content
+        $mail->isHTML(false);
+        $mail->Subject = 'New Site Visit Lead';
+        $mail->Body    = "Name: $name\nWhatsApp: $phone\nEmail: $email";
+
+        $mail->send();
         header("Location: thankyou.html");
         exit;
-    } else {
-        echo "❌ Something went wrong. Please try again later.";
+    } catch (Exception $e) {
+        echo "❌ Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
-?>
