@@ -155,5 +155,13 @@
     margin-top: 20px;
   }
 }
+.lp-ty {
+  font-family: "Montserrat", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  margin-top: 120px;
+}
 
 /*# sourceMappingURL=style.css.map */

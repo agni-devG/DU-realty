@@ -6,3 +6,11 @@ $font-default:"Montserrat", sans-serif;
 @import 'onyx-lp';
 
 
+.lp-ty{
+    font-family: $font-default;
+    font-size: 32px;
+    font-weight: 700;
+    color: $black;
+    text-align: center;
+    margin-top: 120px;
+}
