@@ -2,15 +2,18 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Load PHPMailer files
+// Load PHPMailer classes
 require 'phpmailer/Exception.php';
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
+require 'config.php'; // Make sure this path is correct
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name    = htmlspecialchars($_POST['name']);
-    $phone   = htmlspecialchars($_POST['phone']);
-    $email   = htmlspecialchars($_POST['email']);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // Get form inputs safely
+    $name  = htmlspecialchars($_POST['name']);
+    $phone = htmlspecialchars($_POST['phone']);
+    $email = htmlspecialchars($_POST['email']);
 
     $mail = new PHPMailer(true);
 
@@ -19,25 +22,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = getenv('GMAIL_USER'); // 👈 your Gmail
-        $mail->Password   = getenv('GMAIL_APP_PASSWORD');   // 👈 16-char App Password
+        $mail->Username   = GMAIL_USER;           // from config.php
+        $mail->Password   = GMAIL_APP_PASSWORD;;   // from config.php
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
 
         // Recipients
-        $mail->setFrom(getenv('GMAIL_USER'), 'Website Lead');
-        $mail->addAddress(getenv('GMAIL_USER')); // 👈 where you want to receive leads
+        $mail->setFrom(GMAIL_USER, 'Website Lead');
+        $mail->addAddress(GMAIL_USER);  // Receive leads here
         $mail->addReplyTo($email, $name);
 
-        // Content
+        // Email content
         $mail->isHTML(false);
         $mail->Subject = 'New Site Visit Lead';
         $mail->Body    = "Name: $name\nWhatsApp: $phone\nEmail: $email";
 
+        // Send email
         $mail->send();
+
+        // Redirect to thank you page
         header("Location: thankyou.html");
         exit;
+
     } catch (Exception $e) {
+        // Show PHPMailer error
         echo "❌ Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
+?>
