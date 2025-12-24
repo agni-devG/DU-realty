@@ -95,6 +95,11 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.req-str{
+  color: red;
+  font-size: 16px;
+}
+
 /* Small devices (phones, up to 600px) */
 @media (max-width: 600px) {
   .lp_onyx-nav {
@@ -155,13 +160,6 @@
     margin-top: 20px;
   }
 }
-.lp-ty {
-  font-family: "Montserrat", sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  color: #000000;
-  text-align: center;
-  margin-top: 120px;
-}
+
 
 /*# sourceMappingURL=style.css.map */
