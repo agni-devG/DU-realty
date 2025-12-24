@@ -1,22 +1,19 @@
-
-
-
-
-.ty-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center ;
-    font-family: "Montserrat", sans-serif;
-    color: #000000;
-    p{
-        font-size: 24px;
-        width: 35ch;
-        margin: auto;
-        
-    }
+.ty-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  color: #000000;
 }
 
+/*  */
+
+.ty-container p {
+  font-size: 24px;
+  width: 35ch;
+  margin: auto;
+}
 
 .ty-h1 {
   font-family: "Montserrat", sans-serif;
@@ -28,3 +25,25 @@
   margin-bottom: 0px;
 }
 
+/* Small devices */
+@media (max-width: 600px) {
+  .ty-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  color: #000000;
+}
+
+  .ty-h1 {
+  font-size: 72px;
+  margin-top: 30vh;
+ 
+  }
+
+  .ty-container p {
+    font-size: 20px;
+    width: 25ch;
+  }
+}
