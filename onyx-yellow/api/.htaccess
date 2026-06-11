@@ -1,0 +1,5 @@
+Options -Indexes
+
+<FilesMatch "^(mail-config(?:\.example)?\.php|mail-error\.log)$">
+  Require all denied
+</FilesMatch>
