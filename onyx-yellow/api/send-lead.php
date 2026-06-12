@@ -5,6 +5,24 @@ declare(strict_types=1);
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+$allowedLocalOrigins = [
+    'http://127.0.0.1:5500',
+    'http://localhost:5500',
+];
+
+if (in_array($origin, $allowedLocalOrigins, true)) {
+    header('Access-Control-Allow-Origin: ' . $origin);
+    header('Vary: Origin');
+    header('Access-Control-Allow-Methods: POST, OPTIONS');
+    header('Access-Control-Allow-Headers: Accept, Content-Type');
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
+}
+
 header('Content-Type: application/json');
 
 function respond(bool $ok, string $message, int $status = 200, array $data = []): void
