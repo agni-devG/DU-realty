@@ -1,3 +1,5 @@
+DirectoryIndex index.php
+
 RewriteEngine On
 
 # Skip certain files from rewriting
