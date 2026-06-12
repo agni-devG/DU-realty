@@ -70,6 +70,7 @@ input {
   padding-top: 12px;
   color: #727a7b;
   font-size: 14px;
+  font-weight: 400;
 }
 
 .site-nav a {
@@ -80,6 +81,10 @@ input {
 .site-nav a:focus-visible,
 .site-nav .active {
   color: var(--ink);
+}
+
+.site-nav .active {
+  font-weight: 700;
 }
 
 .menu-toggle {
@@ -104,8 +109,8 @@ input {
 .hero-copy {
   min-height: 333px;
   padding: 16px clamp(32px, 3.5vw, 58px) 62px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.9fr) minmax(270px, 0.9fr);
+  display: flex;
+  justify-content: space-between;
   align-items: end;
   gap: clamp(50px, 9vw, 145px);
 }
@@ -113,7 +118,7 @@ input {
 .hero h1 {
   margin: 0;
   color: #9aa5a7;
-  font-size: clamp(56px, 6.3vw, 92px);
+  font-size: clamp(64px, 8vw, 110px);
   font-weight: 400;
   letter-spacing: -0.055em;
   line-height: 0.99;
