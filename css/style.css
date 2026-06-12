@@ -368,7 +368,7 @@ input {
 @media (max-width: 900px) {
   .hero-copy {
     min-height: auto;
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 36px;
     padding-top: 44px;
   }

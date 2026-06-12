@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Recipients
         $mail->setFrom(GMAIL_USER, 'Website Lead');
         $mail->addAddress(GMAIL_USER);  // Receive leads here
+        $mail->addAddress('akshatdx12345@gmail.com', 'Akshat');
         $mail->addReplyTo($email, $name);
 
         // Email content

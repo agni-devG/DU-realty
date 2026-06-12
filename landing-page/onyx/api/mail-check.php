@@ -21,7 +21,8 @@ if (is_file($configPath)) {
     echo 'SMTP port: ' . ($config['smtp_port'] ?? 'missing') . "\n";
     echo 'SMTP user: ' . ($config['smtp_user'] ?? 'missing') . "\n";
     echo 'SMTP secure: ' . ($config['smtp_secure'] ?? 'missing') . "\n";
-    echo 'Mail to: ' . ($config['mail_to'] ?? 'missing') . "\n";
+    $recipients = $config['mail_recipients'] ?? [];
+    echo 'Mail recipients: ' . ($recipients !== [] ? count($recipients) : 'missing') . "\n";
     echo 'SMTP password: ' . (!empty($config['smtp_pass']) ? 'SET' : 'MISSING') . "\n";
 }
 

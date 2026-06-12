@@ -110,7 +110,13 @@ try {
     $mail->Port = $config['smtp_port'];
 
     $mail->setFrom($config['smtp_user'], 'Bhutani Cyberthum Website');
-    $mail->addAddress($config['mail_to'], $config['mail_to_name']);
+    $recipients = $config['mail_recipients'] ?? [
+        ['email' => $config['mail_to'], 'name' => $config['mail_to_name']],
+    ];
+
+    foreach ($recipients as $recipient) {
+        $mail->addAddress($recipient['email'], $recipient['name'] ?? '');
+    }
 
     if ($email !== '') {
         $mail->addReplyTo($email, $name);

@@ -6,6 +6,8 @@ return [
     'smtp_user' => 'your-email@gmail.com',
     'smtp_pass' => 'your-gmail-app-password',
     'smtp_secure' => 'tls',
-    'mail_to' => 'destination@example.com',
-    'mail_to_name' => 'Bhutani Cyberthum',
+    'mail_recipients' => [
+        ['email' => 'destination@example.com', 'name' => 'Bhutani Cyberthum'],
+        ['email' => 'akshatdx12345@gmail.com', 'name' => 'Akshat'],
+    ],
 ];
