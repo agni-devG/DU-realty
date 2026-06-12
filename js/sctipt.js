@@ -21,12 +21,6 @@ const footerForm = document.querySelector("[data-footer-form]");
 if (footerForm) {
   const submitButton = footerForm.querySelector('button[type="submit"]');
   const statusMessage = footerForm.nextElementSibling;
-  const isLiveServer =
-    ["127.0.0.1", "localhost"].includes(window.location.hostname) &&
-    window.location.port === "5500";
-  const formEndpoint = isLiveServer
-    ? "http://127.0.0.1:8000/onyx-yellow/api/send-lead.php"
-    : footerForm.action;
 
   footerForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -36,7 +30,7 @@ if (footerForm) {
     statusMessage.classList.remove("error");
 
     try {
-      const response = await fetch(formEndpoint, {
+      const response = await fetch(footerForm.action, {
         method: "POST",
         body: new FormData(footerForm),
         headers: {

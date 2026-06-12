@@ -99,7 +99,7 @@ declare(strict_types=1);
 
       <div class="visit-form-wrap">
         <h2>Schedule A Site Visit</h2>
-        <form class="visit-form" action="onyx-yellow/api/send-lead.php" method="post" data-footer-form>
+        <form class="visit-form" action="onyx-yellow/api/send-lead" method="post" data-footer-form>
           <input name="lead_type" type="hidden" value="homepage_email">
           <input class="honeypot" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label class="sr-only" for="visit-email">Enter your email</label>
