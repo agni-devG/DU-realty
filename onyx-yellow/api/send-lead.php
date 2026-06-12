@@ -53,14 +53,19 @@ $name = trim((string) ($_POST['name'] ?? ''));
 $contact = trim((string) ($_POST['contact'] ?? ''));
 $email = trim((string) ($_POST['email'] ?? ''));
 $leadType = trim((string) ($_POST['lead_type'] ?? 'site_visit'));
+$isHomepageEmail = $leadType === 'homepage_email';
 
-if ($name === '' || $contact === '') {
+if ($isHomepageEmail && $email === '') {
+    respond(false, 'Please enter your email address.', 422);
+}
+
+if (!$isHomepageEmail && ($name === '' || $contact === '')) {
     respond(false, 'Please enter your name and contact number.', 422);
 }
 
 $normalizedContact = preg_replace('/[\s-]/', '', $contact);
 
-if (!preg_match('/^(?:\+91|91)?[6-9]\d{9}$/', $normalizedContact)) {
+if (!$isHomepageEmail && !preg_match('/^(?:\+91|91)?[6-9]\d{9}$/', $normalizedContact)) {
     respond(false, 'Please enter a correct number.', 422);
 }
 
@@ -73,9 +78,10 @@ $labels = [
     'brochure' => 'Brochure Download',
     'floor_plan' => 'Floor Plan Download',
     'contact' => 'Contact Form',
+    'homepage_email' => 'Homepage Site Visit',
 ];
 
-$subject = 'New Site Visit Lead';
+$subject = $isHomepageEmail ? 'New Homepage Site Visit Lead' : 'New Site Visit Lead';
 $leadLabel = $labels[$leadType] ?? $labels['site_visit'];
 $downloadUrls = [
     'brochure' => 'assets/downloads/onyx_brochure.pdf',
@@ -85,16 +91,16 @@ $downloadUrls = [
 $body = '
   <h2>New Lead - ' . htmlspecialchars($leadLabel, ENT_QUOTES, 'UTF-8') . '</h2>
   <table cellpadding="8" cellspacing="0" border="0">
-    <tr><td><strong>Name</strong></td><td>' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '</td></tr>
-    <tr><td><strong>Contact Number</strong></td><td>' . htmlspecialchars($contact, ENT_QUOTES, 'UTF-8') . '</td></tr>
+    <tr><td><strong>Name</strong></td><td>' . htmlspecialchars($name !== '' ? $name : 'Not provided', ENT_QUOTES, 'UTF-8') . '</td></tr>
+    <tr><td><strong>Contact Number</strong></td><td>' . htmlspecialchars($contact !== '' ? $contact : 'Not provided', ENT_QUOTES, 'UTF-8') . '</td></tr>
     <tr><td><strong>Email</strong></td><td>' . htmlspecialchars($email !== '' ? $email : 'Not provided', ENT_QUOTES, 'UTF-8') . '</td></tr>
     <tr><td><strong>Lead Type</strong></td><td>' . htmlspecialchars($leadLabel, ENT_QUOTES, 'UTF-8') . '</td></tr>
   </table>
 ';
 
 $plainBody = "New Lead - {$leadLabel}\n"
-    . "Name: {$name}\n"
-    . "Contact Number: {$contact}\n"
+    . 'Name: ' . ($name !== '' ? $name : 'Not provided') . "\n"
+    . 'Contact Number: ' . ($contact !== '' ? $contact : 'Not provided') . "\n"
     . 'Email: ' . ($email !== '' ? $email : 'Not provided') . "\n"
     . "Lead Type: {$leadLabel}\n";
 
