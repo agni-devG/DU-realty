@@ -371,6 +371,7 @@ input {
     flex-direction: column;
     gap: 36px;
     padding-top: 44px;
+    align-items: flex-start;
   }
 
   .hero-copy > p {
