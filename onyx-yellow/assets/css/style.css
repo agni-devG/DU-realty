@@ -359,6 +359,7 @@ button {
 .offer-button {
   display: block;
   width: 100%;
+  max-width: 100%;
   padding: 0;
   background: transparent;
   cursor: pointer;
@@ -368,6 +369,7 @@ button {
 .offer-item img {
   display: block;
   width: 100%;
+  max-width: 100%;
   aspect-ratio: 2 / 1;
   object-fit: cover;
   transition: transform 180ms ease;
@@ -964,7 +966,7 @@ button {
   }
 
   .offer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 28px;
   }
 
@@ -1187,7 +1189,7 @@ button {
   }
 
   .offer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 30px;
   }
 
