@@ -88,6 +88,15 @@
             <span>E-mail Id</span>
             <input type="email" name="email" placeholder="example@email.com">
           </label>
+          <label>
+            <span>When are you planning to visit <abbr class="required-star" title="required">*</abbr></span>
+            <select name="visit_plan" required>
+              <option value="">Select one</option>
+              <option value="This week">This week</option>
+              <option value="Next week">Next week</option>
+              <option value="this Month">this Month</option>
+            </select>
+          </label>
           <button type="submit">Schedule Site Visit</button>
           <p class="form-status" data-form-status aria-live="polite"></p>
         </form>
@@ -121,6 +130,15 @@
           <label>
             <span>E-mail Id</span>
             <input type="email" name="email" placeholder="example@email.com">
+          </label>
+          <label>
+            <span>When are you planning to visit <abbr class="required-star" title="required">*</abbr></span>
+            <select name="visit_plan" required>
+              <option value="">Select one</option>
+              <option value="This week">This week</option>
+              <option value="Next week">Next week</option>
+              <option value="this Month">this Month</option>
+            </select>
           </label>
           <button type="submit">Schedule Site Visit</button>
           <p class="form-status" data-form-status aria-live="polite"></p>
@@ -275,6 +293,15 @@
               <span>E-mail Id</span>
               <input type="email" name="email" placeholder="example@email.com">
             </label>
+            <label>
+              <span>When are you planning to visit <abbr class="required-star" title="required">*</abbr></span>
+              <select name="visit_plan" required>
+                <option value="">Select one</option>
+                <option value="This week">This week</option>
+                <option value="Next week">Next week</option>
+                <option value="this Month">this Month</option>
+              </select>
+            </label>
             <button type="submit">Schedule Site Visit</button>
             <p class="form-status" data-form-status aria-live="polite"></p>
           </form>
@@ -413,6 +440,14 @@
 
         status.textContent = '';
         status.classList.remove('is-error', 'is-success');
+
+        const visitPlanInput = form.querySelector('[name="visit_plan"]');
+        if (visitPlanInput && visitPlanInput.value === '') {
+          status.textContent = 'Please select a time when you want to visit.';
+          status.classList.add('is-error');
+          visitPlanInput.focus();
+          return;
+        }
 
         const contactInput = form.querySelector('[name="contact"]');
         const normalizedContact = contactInput.value.replace(/[\s-]/g, '');

@@ -52,6 +52,7 @@ if (!empty($_POST['website'] ?? '')) {
 $name = trim((string) ($_POST['name'] ?? ''));
 $contact = trim((string) ($_POST['contact'] ?? ''));
 $email = trim((string) ($_POST['email'] ?? ''));
+$visitPlan = trim((string) ($_POST['visit_plan'] ?? ''));
 $leadType = trim((string) ($_POST['lead_type'] ?? 'site_visit'));
 $isHomepageEmail = $leadType === 'homepage_email';
 
@@ -61,6 +62,10 @@ if ($isHomepageEmail && $email === '') {
 
 if (!$isHomepageEmail && ($name === '' || $contact === '')) {
     respond(false, 'Please enter your name and contact number.', 422);
+}
+
+if (!$isHomepageEmail && $visitPlan === '') {
+    respond(false, 'Please select a time when you want to visit.', 422);
 }
 
 $normalizedContact = preg_replace('/[\s-]/', '', $contact);
@@ -94,6 +99,7 @@ $body = '
     <tr><td><strong>Name</strong></td><td>' . htmlspecialchars($name !== '' ? $name : 'Not provided', ENT_QUOTES, 'UTF-8') . '</td></tr>
     <tr><td><strong>Contact Number</strong></td><td>' . htmlspecialchars($contact !== '' ? $contact : 'Not provided', ENT_QUOTES, 'UTF-8') . '</td></tr>
     <tr><td><strong>Email</strong></td><td>' . htmlspecialchars($email !== '' ? $email : 'Not provided', ENT_QUOTES, 'UTF-8') . '</td></tr>
+    <tr><td><strong>Visit Plan</strong></td><td>' . htmlspecialchars($visitPlan !== '' ? $visitPlan : 'Not provided', ENT_QUOTES, 'UTF-8') . '</td></tr>
     <tr><td><strong>Lead Type</strong></td><td>' . htmlspecialchars($leadLabel, ENT_QUOTES, 'UTF-8') . '</td></tr>
   </table>
 ';
@@ -102,6 +108,7 @@ $plainBody = "New Lead - {$leadLabel}\n"
     . 'Name: ' . ($name !== '' ? $name : 'Not provided') . "\n"
     . 'Contact Number: ' . ($contact !== '' ? $contact : 'Not provided') . "\n"
     . 'Email: ' . ($email !== '' ? $email : 'Not provided') . "\n"
+    . 'Visit Plan: ' . ($visitPlan !== '' ? $visitPlan : 'Not provided') . "\n"
     . "Lead Type: {$leadLabel}\n";
 
 $mail = new PHPMailer(true);
