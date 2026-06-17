@@ -323,7 +323,6 @@ button {
   padding: 8px 12px;
   line-height: 1.2;
   color: #171c24;
-
 }
 
 .lead-form button {
@@ -340,6 +339,50 @@ button {
   font-size: clamp(36px, 4vw, 58px);
   font-weight: 800;
   line-height: 1;
+}
+
+.offer-section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.offer-item {
+  min-width: 0;
+}
+
+.offer-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.offer-item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  transition: transform 180ms ease;
+}
+
+.offer-button:hover img {
+  transform: scale(1.04);
+}
+
+.offer-item h3 {
+  margin: 12px 0 0;
+  font-size: clamp(20px, 1.7vw, 24px);
+  font-weight: 600;
+  line-height: 1.05;
+  text-align: center;
 }
 
 .highlight-row {
@@ -920,6 +963,15 @@ button {
     margin-bottom: 28px;
   }
 
+  .offer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .offer-item h3 {
+    margin-top: 10px;
+  }
+
   .highlight-row,
   .highlight-row.reverse {
     grid-template-columns: 1fr;
@@ -1132,6 +1184,15 @@ button {
   .section h2 {
     margin-bottom: 48px;
     font-size: 50px;
+  }
+
+  .offer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .offer-item img {
+    aspect-ratio: 2.2 / 1;
   }
 
   .highlight-row,
@@ -1381,6 +1442,19 @@ button {
   .section h2 {
     margin-bottom: 32px;
     font-size: 64px;
+  }
+
+  .offer-section {
+    padding-top: 46px;
+    padding-bottom: 46px;
+  }
+
+  .offer-item img {
+    aspect-ratio: 1.45 / 1;
+  }
+
+  .offer-item h3 {
+    font-size: 28px;
   }
 
   .highlights .container {
